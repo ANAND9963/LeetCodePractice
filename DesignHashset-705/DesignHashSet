@@ -1,0 +1,74 @@
+//Time Complexity O(1).
+//space O(n);
+
+
+class MyHashSet {
+
+    int buckets;
+    int bucketitems;
+    boolean[][] array;
+
+    public MyHashSet() {
+        this.buckets = 1000;
+        this.bucketitems = 1000;
+        this.array = new boolean[1000][];
+
+    }
+
+    private int hash1(int key) {
+        return key % buckets;
+    }
+
+    private int hash2(int key) {
+        return key / bucketitems;
+    }
+
+    public void add(int key) {
+
+        int bucket = hash1(key);
+        int bucketitem = hash2(key);
+
+        if (array[bucket] == null) {
+            if (bucket == 0) {
+                array[bucket] = new boolean[bucketitems + 1];
+            } else {
+                array[bucket] = new boolean[bucketitems];
+            }
+        }
+
+        array[bucket][bucketitem] = true;
+
+    }
+
+    public void remove(int key) {
+        int bucket = hash1(key);
+        int bucketitem = hash2(key);
+
+        if (array[bucket] == null)
+            return;
+
+        if (array[bucket][bucketitem]) {
+            array[bucket][bucketitem] = false;
+        }
+
+    }
+
+    public boolean contains(int key) {
+        int bucket = hash1(key);
+        int bucketitem = hash2(key);
+
+        if (array[bucket] == null)
+            return false;
+
+        return array[bucket][bucketitem];
+
+    }
+}
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
