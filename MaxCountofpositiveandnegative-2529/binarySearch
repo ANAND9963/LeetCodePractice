@@ -1,0 +1,43 @@
+class Solution {
+    public int maximumCount(int[] nums) {
+
+        int low =0;
+         int countP = 0;
+         int countN =0;
+        int high = nums.length-1;
+        if(nums[low]>0 ) {
+            return nums.length;
+        }else if(nums[high]<0){
+            return nums.length;
+        }else{
+            while(low<=high){
+
+                int mid = low +(high-low)/2;
+                if(nums[mid]==0){
+                    if(nums[low]==0){
+                        low = mid+1;
+                    }  
+                   else if(countP<=countN){
+                      high =mid-1;
+                    }else{
+                      
+                        low = mid+1;
+                    }
+                }
+               else if(nums[mid] > 0){
+                countP+= (high-mid +1);
+                high = mid -1;
+               }else{
+                countN+=(mid-low +1);
+                low = mid +1;
+
+               }
+
+            }
+
+        }
+
+        return Math.max(countP,countN);
+        
+    }
+}

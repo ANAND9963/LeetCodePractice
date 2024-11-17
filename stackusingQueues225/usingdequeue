@@ -1,0 +1,37 @@
+class MyStack {
+
+    Deque <Integer> deq = new ArrayDeque<>();
+    public MyStack() {
+        
+    }
+    
+    public void push(int x) {
+        deq.addFirst(x);
+        
+    }
+    
+    public int pop() {
+       return deq.removeFirst();
+        
+    }
+    
+    public int top() {
+        
+        return deq.peekFirst();
+    }
+    
+    public boolean empty() {
+
+        return deq.size() == 0;
+        
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
