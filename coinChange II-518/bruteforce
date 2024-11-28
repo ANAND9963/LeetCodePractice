@@ -1,0 +1,22 @@
+class Solution {
+    public int change(int amount, int[] coins) {
+
+        int res = helper(coins, amount, 0);
+
+        return res;
+        
+    }
+
+    public int helper(int [] coins ,int amount , int index){
+
+        if(amount == 0) return 1;
+
+        if(coins.length == index || amount < 0) return 0;
+
+        int case1 = helper(coins, amount - coins[index] , index);
+        int case2 = helper(coins, amount , index+1);
+
+        return case1+case2;
+
+    }
+}
