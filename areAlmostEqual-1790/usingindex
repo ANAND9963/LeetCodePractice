@@ -1,0 +1,42 @@
+class Solution {
+    public boolean areAlmostEqual(String s1, String s2) {
+
+
+        int count =0;
+
+        char h1 = s1.charAt(0);
+        char h2 = s2.charAt(0);
+        int index = 0;
+        
+
+        for(int i =0 ; i<s1.length(); i++){
+            char ch1 = s1.charAt(i);
+            char ch2 = s2.charAt(i);
+            
+
+            if(ch1 != ch2 ){
+                count++;
+                if(count ==1){
+                    h1 = ch1;
+                    h2 = ch2;
+                }else if(count == 2){
+                    
+                    index = i;
+   
+                }
+            }    
+
+        }
+        
+        if(count ==0) return true;
+
+        if(count ==2 && s1.charAt(index) == h2 && s2.charAt(index)== h1) return true;
+
+        return false;
+
+
+        
+         
+        
+    }
+}
