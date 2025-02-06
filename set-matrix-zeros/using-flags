@@ -1,0 +1,40 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        boolean [] rowflag = new boolean[m];
+        boolean [] colflag = new boolean[n];
+        
+
+        for(int i =0 ;i< m;i++){
+            for(int j = 0 ;j < n ;j++){
+
+                if(matrix[i][j] == 0){
+                    rowflag[i] = true;
+                    colflag[j] = true;
+                }
+
+            }
+        }
+
+
+        for(int i =0 ;i< m;i++){
+            for(int j = 0 ;j < n ;j++){
+
+                if(rowflag[i] ||colflag[j] ){
+                    matrix[i][j] = 0;
+                }
+
+            }
+        }
+        
+
+       
+
+        
+
+        
+    }
+}
