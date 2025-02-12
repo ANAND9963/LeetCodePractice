@@ -1,0 +1,34 @@
+class Solution {
+    public int maximumSum(int[] nums) {
+
+        int max = -1;
+       
+
+        for(int i =0 ; i<nums.length; i++){
+            
+             for(int j = i+1; j< nums.length ; j++){
+                int sumi = sumOfDigits(nums[i]);
+                int sumj = sumOfDigits(nums[j]);
+
+                System.out.println(sumi +"    "+ sumj);
+
+                if(sumi == sumj){
+                     max = Math.max(max, nums[i] + nums[j]);  
+                }
+            }
+
+           
+        }
+
+        return max;
+        
+    }
+
+    public static int sumOfDigits(int n) {
+        int sum = 0;
+        for (char digit : String.valueOf(n).toCharArray()) {
+            sum += Character.getNumericValue(digit);
+        }
+        return sum;
+    }
+}

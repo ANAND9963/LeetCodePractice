@@ -1,0 +1,37 @@
+class Solution {
+    public int maximumSum(int[] nums) {
+
+        int max = -1;
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        for(int i =0 ; i<nums.length; i++){
+            
+            int sumi = sumOfDigits(nums[i]);
+
+            if(map.containsKey(sumi)){
+
+                int index = map.get(sumi);
+                max = Math.max(max, nums[index]+nums[i]);
+                if(nums[i] > nums[index]){
+                    map.put(sumi ,i);
+                }
+                
+            }else{
+                map.put(sumi,i);
+            }
+
+           
+        }
+
+        return max;
+        
+    }
+
+    public static int sumOfDigits(int n) {
+        int sum = 0;
+        for (char digit : String.valueOf(n).toCharArray()) {
+            sum += Character.getNumericValue(digit);
+        }
+        return sum;
+    }
+}
