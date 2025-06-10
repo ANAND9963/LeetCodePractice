@@ -1,24 +1,26 @@
 class Solution {
     public int maxDifference(String s) {
 
-        Map<Character,Integer> hmap = new HashMap<>();
+       int[] freq = new int[26]; // since s has only lowercase letters
 
-        int maxOdd = 1,minEven = s.length();
-
-        for(char ch : s.toCharArray()){
-
-              hmap.put(ch, hmap.getOrDefault(ch, 0) + 1);
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'a']++;
         }
 
-         for (int value : hmap.values()) {
-            if (value % 2 == 1) {
-                maxOdd = Math.max(maxOdd, value);
+        int maxOdd = 1;
+        int minEven = s.length(); 
+
+        for (int count : freq) {
+            if (count == 0) continue;
+
+            if (count % 2 == 1) {
+                maxOdd = Math.max(maxOdd, count);
             } else {
-                minEven = Math.min(minEven, value);
+                minEven = Math.min(minEven, count);
             }
         }
-        return maxOdd - minEven;
 
+        return maxOdd - minEven;
 
         
     }
