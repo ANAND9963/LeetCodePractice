@@ -14,11 +14,11 @@ class Solution {
             map.get(from).add(to);
         }
 
-        List<String> result = new ArrayList<>();
+        LinkedList<String> result = new LinkedList<>();
 
         dfs("JFK", map , result);
 
-         Collections.reverse(result);
+         
         return result;
     }
 
@@ -29,7 +29,7 @@ class Solution {
                 dfs(destinations.poll(),map, result);
             }
 
-            result.add(airport);
+            result.addFirst(airport);
         
     }
 }
