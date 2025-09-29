@@ -1,27 +1,17 @@
 class Solution {
-    public String gcdOfStrings(String str1, String str2) {
-        int m = str1.length(), n = str2.length();
-
-        for(int i = Math.min(m, n) ; i >= 1 ; i--){
-            if(isValid(str1, str2 , i)){
-                return str1.substring(0, i);
-            }
+    public static int gcd(int x, int y){
+        if(y == 0){
+            return x;
+        }else{
+            return gcd(y, x % y);
         }
+    };
 
-        return "";
-        
-    }
-
-
-    public boolean isValid(String str1 , String str2 , int k){
-
-            int m = str1.length(), n = str2.length();
-            if( m % k > 0 || n % k > 0){
-                return false;
-            }else{
-                String s1 = str1.substring(0, k);
-                return str1.replace(s1 , "").isEmpty() && str2.replace(s1 , "").isEmpty();
-            }
-
-    }
+    public String gcdOfStrings(String str1, String str2) {
+        if(!(str1 + str2).equals(str2 + str1)){
+            return "";
+        }else{
+            return str1.substring(0, gcd(str1.length(), str2.length()));
+        }
+    } 
 }
