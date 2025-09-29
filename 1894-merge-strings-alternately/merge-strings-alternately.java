@@ -3,22 +3,21 @@ class Solution {
 
         int m = word1.length();
         int n = word2.length();
-        
+
         StringBuilder sb = new StringBuilder();
 
-        for(int i =0 ; i< Math.max(m,n) ; i++){
-          if(i  < m ){
-            char w1 = word1.charAt(i);
-            sb.append(w1);
-          }
+        for (int i = 0; i < Math.max(m, n); i++) {
+            if (i < m) {
+                sb.append(word1.charAt(i));
+            }
 
-          if(i < n ){
-             char w2 = word2.charAt(i);
-            sb.append(w2);
-          }
+            if (i < n) {
+
+                sb.append(word2.charAt(i));
+            }
         }
 
         return sb.toString();
-        
+
     }
 }
