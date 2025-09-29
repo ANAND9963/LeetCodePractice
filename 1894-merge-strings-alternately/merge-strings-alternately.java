@@ -3,22 +3,16 @@ class Solution {
 
         int m = word1.length();
         int n = word2.length();
-
-        if(m < n ){
-            int temp = m;
-            m = n;
-            n= temp;
-        }
         
         StringBuilder sb = new StringBuilder();
 
-        for(int i =0 ; i< m ; i++){
-          if(i  < word1.length() ){
+        for(int i =0 ; i< Math.max(m,n) ; i++){
+          if(i  < m ){
             char w1 = word1.charAt(i);
             sb.append(w1);
           }
 
-          if(i < word2.length() ){
+          if(i < n ){
              char w2 = word2.charAt(i);
             sb.append(w2);
           }
